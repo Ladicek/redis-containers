@@ -1,0 +1,6 @@
+bind 0.0.0.0
+port ${PORT}
+appendonly yes
+dir /redis/${PORT}/data
+protected-mode no
+replicaof 127.0.0.1 7000
