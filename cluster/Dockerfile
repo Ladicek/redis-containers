@@ -1,4 +1,4 @@
-FROM redis:7.2.5
+FROM redis:7.2.4
 
 RUN apt update && apt install gettext-base && apt clean
 
