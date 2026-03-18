@@ -1,4 +1,4 @@
-FROM redis:8.4.0
+FROM redis:8.4.2
 
 COPY entrypoint.sh /
 RUN chmod 755 /entrypoint.sh

@@ -1,4 +1,4 @@
-FROM redis:8.4.0
+FROM redis:8.4.2
 
 RUN apt update && apt install gettext-base && apt clean
 
