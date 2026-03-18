@@ -45,6 +45,13 @@ if [[ "$1" = "redis" ]] ; then
     echo "tls-auth-clients no" >> /redis/redis.conf
   fi
 
+  MOD_PATH=/usr/local/lib/redis/modules
+  if [[ -d $MOD_PATH ]] ; then
+    for MOD in $(ls $MOD_PATH) ; do
+      echo "loadmodule $MOD_PATH/$MOD" >> /redis/redis.conf
+    done
+  fi
+
   redis-server /redis/redis.conf &
 
   bash -c "trap : TERM INT; sleep infinity & wait"
