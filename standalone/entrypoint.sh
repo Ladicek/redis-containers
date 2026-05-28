@@ -52,6 +52,13 @@ if [[ "$1" = "redis" ]] ; then
     done
   fi
 
+  if [[ "$REDIS_UNIX_DOMAIN_SOCKET" = "yes" ]] ; then
+    mkdir -p /var/run/redis
+    chown -R redis:redis /var/run/redis
+    echo "unixsocket /var/run/redis/redis.sock" >> /redis/redis.conf
+    echo "unixsocketperm 777" >> /redis/redis.conf
+  fi
+
   redis-server /redis/redis.conf &
 
   bash -c "trap : TERM INT; sleep infinity & wait"
